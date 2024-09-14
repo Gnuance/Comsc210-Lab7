@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iomanip>
 using namespace std;
 
 void Reverse(string *&, int);                     // Reverse order of strings in array
@@ -36,15 +35,13 @@ int main()
 void Reverse(string *&arrPtr, int arrSize)
 {
     // For array size, loop and exchange index values to reverse array
-    string *tempPtr = nullptr;
+    string temp = "";
     for (size_t i = 0; i < arrSize / 2; i++) // Loop halfway up array exchanging opposite index values
     {
-        *tempPtr = *(arrPtr + i);
+        temp = *(arrPtr + i);
         *(arrPtr + i) = *(arrPtr + arrSize - 1 - i);
-        *(arrPtr + arrSize - 1 - i) = *tempPtr;
+        *(arrPtr + arrSize - 1 - i) = temp;
     }
-
-    tempPtr = nullptr;
 }
 
 // Output array on one line
