@@ -17,12 +17,12 @@ int main()
     *(sArrayPtr + 4) = "Schmidt";
 
     // Output array before reverse
-    cout << "Name array BEFORE reverse: " << OutputArray(sArrayPtr, ARRAY_SIZE) << endl;
+    cout << "Name array BEFORE reverse: " << OutputArray(sArrayPtr, ARRAY_SIZE) << endl << endl;
 
     Reverse(sArrayPtr, ARRAY_SIZE); // Reverse order of array strings
 
     // Output array after reverse
-    cout << "Name array AFTER reverse: " << OutputArray(sArrayPtr, ARRAY_SIZE) << endl;
+    cout << "Name array AFTER reverse: " << OutputArray(sArrayPtr, ARRAY_SIZE) << endl << endl;
 
     // Deallocate heap elements and nullify pointers
     delete[] sArrayPtr;
