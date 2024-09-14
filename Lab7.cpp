@@ -2,7 +2,7 @@
 #include <iomanip>
 using namespace std;
 
-void Reverse(string *&, int); // Reverse order of strings in array
+void Reverse(string *&, int);                     // Reverse order of strings in array
 string OutputArray(string *&arrPtr, int arrSize); // Output array on 1 line
 
 int main()
@@ -19,8 +19,8 @@ int main()
 
     // Output array before reverse
     cout << "Name array BEFORE reverse: " << OutputArray(sArrayPtr, ARRAY_SIZE) << endl;
-    
-    // Reverse(sArrayPtr, ARRAY_SIZE); // Reverse order of array strings
+
+    Reverse(sArrayPtr, ARRAY_SIZE); // Reverse order of array strings
 
     // Output array after reverse
     cout << "Name array AFTER reverse: " << OutputArray(sArrayPtr, ARRAY_SIZE) << endl;
@@ -33,16 +33,18 @@ int main()
 }
 
 // Populate array with user input
-void Reverse(string *& arrPtr, int arrSize)
+void Reverse(string *&arrPtr, int arrSize)
 {
-    // For array size, loop with cin to get double values
-    cout << "Data entry to populate array:" << endl;
-    for (size_t i = 0; i < arrSize; i++)
+    // For array size, loop and exchange index values to reverse array
+    string *tempPtr = nullptr;
+    for (size_t i = 0; i < arrSize / 2; i++) // Loop halfway up array exchanging opposite index values
     {
-        cout << "\t> Please enter a double for index #" << i << ": ";
-        cin >> *(arrPtr + i);
+        *tempPtr = *(arrPtr + i);
+        *(arrPtr + i) = *(arrPtr + arrSize - 1 - i);
+        *(arrPtr + arrSize - 1 - i) = *tempPtr;
     }
-    cout << "Data entry complete." << endl;
+
+    tempPtr = nullptr;
 }
 
 // Output array on one line
@@ -52,7 +54,8 @@ string OutputArray(string *&arrPtr, int arrSize)
     string output = "{";
     for (size_t i = 0; i < arrSize; i++)
     {
-        if (i > 0) output += ", "; // Add ',' and ' ' for each additional value after the first
+        if (i > 0)
+            output += ", "; // Add ',' and ' ' for each additional value after the first
         output += *(arrPtr + i);
     }
     output += "}";
